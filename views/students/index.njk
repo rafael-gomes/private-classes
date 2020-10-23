@@ -1,0 +1,43 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<div class="card table-container">
+    
+    <table width="100%">
+        <thead>
+            <tr>
+                <th>Nome Completo</th>
+                <th>Email</th>
+                <th>Ano Escolar</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+                <tr>
+                    <td>
+                        <span style="background-image: url({{student.avatar_url}})"></span>
+                        {{student.name}}
+                    </td>
+                    <td>{{student.email}}</td>
+                    <td>
+                        {% if student.grade == "5EF"%}5º Ano Ensino Fundamental{%endif%}
+                        {% if student.grade == "6EF"%}6º Ano Ensino Fundamental{%endif%}
+                        {% if student.grade == "7EF"%}7º Ano Ensino Fundamental{%endif%}
+                        {% if student.grade == "8EF"%}8º Ano Ensino Fundamental{%endif%}
+                        {% if student.grade == "9EF"%}9º Ano Ensino Fundamental{%endif%}
+                        {% if student.grade == "1EM"%}1º Ano Ensino Médio{%endif%}
+                        {% if student.grade == "2EM"%}2º Ano Ensino Médio{%endif%}
+                        {% if student.grade == "3EM"%}3º Ano Ensino Médio{%endif%}
+                        {# {{student.grade}} #}
+                    </td>
+                    <td><a href="/students/{{student.id}}">Visualizar</a></td>
+                </tr>
+            {%endfor%}
+            </tr>
+        </tbody>
+    </table>
+    <a href="/students/create">Novo</a>
+</div>
+
+{% endblock content %}
